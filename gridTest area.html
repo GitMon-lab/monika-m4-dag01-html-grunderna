@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            /*1fr 2fr- en del, den andra dubbelts så bred
+                        auto 1fr
+                        minmax(200px, 1 fr) Minst 200 men högst 1fr
+                        repeat(2, 1fr) 2 kolumner a 1fr eller tänka  2 * 1fr
+            auto-fit: tomma kolumner kollapsar, reserande children fyller ut, vanligast
+            auto-fill tomma kolumner visas, children behåller storlek, tomt utrymme visas
+
+                        responsiv sida
+                        display:grid; grid-template-columns: repeat(auto-fit,minmax(240px,1fr)); gap 20px;
+
+                        Låt radhöjd följa innehåll, sätt ej fast höjd
+                         grid-template-columns: 1fr 2fr 1f
+                         grid-auto.rows:minmax(100px, auto);
+
+                         grid-column:span2 tar 2 kolumner använd för rubriker
+                         grid-column: 1/-1; hela raden
+                        */
+
+            .kort {
+                display: grid;
+                grid-template-columns: 220px 1fr;
+                grid-template-areas:
+                    'header header'
+                    'sidebar main'
+                    'footer footer';
+
+                .header {
+                    grid-area: header;
+                }
+                .aside {
+                    grid-area: sidebar;
+                }
+                .main {
+                    grid-area: main;
+                }
+                .footer {
+                    grid-area: footer;
+                }
+
+                column-gap: 8px;
+                row-gap: 8px;
+            }
+
+            .ruta {
+                border: solid grey 2px;
+                background-color: brown;
+                font-size: 32px;
+                padding: 16px;
+            }
+
+            .header {
+                background-color: blueviolet;
+            }
+            .aside {
+                background-color: rgb(66, 50, 146);
+            }
+            .main {
+                background-color: rgb(43, 226, 64);
+            }
+            .footer {
+                background-color: rgb(17, 17, 17);
+                color: white;
+            }
+        </style>
+    </head>
+    <body>
+        <section class="kort">
+            <div class="ruta headerCol">1 header</div>
+            <div class="ruta main">2 aside</div>
+            <div class="ruta aside">3 main</div>
+            <div class="ruta footer">4 footer</div>
+        </section>
+    </body>
+</html>
